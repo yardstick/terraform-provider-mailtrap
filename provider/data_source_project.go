@@ -11,11 +11,11 @@ func datasourceProject() *schema.Resource {
 	return &schema.Resource{
 		Read: dataSourceReadProject,
 		Schema: map[string]*schema.Schema{
-			"name": &schema.Schema{
+			"name": {
 				Type:     schema.TypeString,
 				Required: true,
 			},
-			"id": &schema.Schema{
+			"id": {
 				Type:     schema.TypeString,
 				Computed: true,
 			},

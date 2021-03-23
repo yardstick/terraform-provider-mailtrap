@@ -1,0 +1,4 @@
+*.tfvars
+*.tfstate*
+.terraform/
+terraform-provider-mailtrap

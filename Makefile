@@ -1,6 +1,6 @@
 TF_LOG=ERROR
 
-test: build load init plan apply email
+test: build load init plan apply email destroy
 
 
 
@@ -31,6 +31,6 @@ build:
 load:
 	cp terraform-provider-mailtrap ~/.terraform.d/plugins/darwin_amd64/terraform-provider-mailtrap
 
-docs:
+documentation:
 	go get github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
 	go run github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs

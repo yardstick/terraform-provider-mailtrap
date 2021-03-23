@@ -10,8 +10,17 @@ resource mailtrap_project test {
 }
 
 resource mailtrap_inbox test {
-  name       = "mailtrap_terraform_test${mailtrap_project.test.id}"
+  name       = "mailtrap_terraform_test"
   project_id = mailtrap_project.test.id
+}
+
+data mailtrap_project default {
+  name = "Default"
+}
+
+resource mailtrap_inbox default {
+  name       = "new_mailbox_in_default"
+  project_id = data.mailtrap_project.default.id
 }
 
 

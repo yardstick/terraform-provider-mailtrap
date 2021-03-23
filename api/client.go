@@ -33,6 +33,18 @@ func (c *Client) Get(url string) (map[string]interface{}, error) {
 	return responseToJson(resp)
 }
 
+func (c *Client) GetArray(url string) ([]map[string]interface{}, error) {
+	uri := BASE_URL + url + "?api_token=" + c.token
+	resp, err := http.Get(uri)
+
+	err = handleError(resp, nil, err)
+	if err != nil {
+		return nil, err
+	}
+
+	return responseToJsonArray(resp)
+}
+
 func (c *Client) Post(url string, body map[string]interface{}) (map[string]interface{}, error) {
 	json, err := json.Marshal(body)
 	if err != nil {
@@ -115,6 +127,25 @@ func handleError(resp *http.Response, json []byte, err error) error {
 func responseToJson(resp *http.Response) (map[string]interface{}, error) {
 	defer resp.Body.Close()
 	var data map[string]interface{}
+
+	bodyBytes, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		log.Error("Could not read body: " + err.Error())
+		return nil, err
+	}
+
+	err = json.Unmarshal(bodyBytes, &data)
+	if err != nil {
+		log.Error("Could not transform to Map: " + err.Error())
+		return nil, err
+	}
+
+	return data, nil
+}
+
+func responseToJsonArray(resp *http.Response) ([]map[string]interface{}, error) {
+	defer resp.Body.Close()
+	var data []map[string]interface{}
 
 	bodyBytes, err := ioutil.ReadAll(resp.Body)
 	if err != nil {

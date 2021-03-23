@@ -19,6 +19,9 @@ func Provider() terraform.ResourceProvider {
 			"mailtrap_project": resourceProject(),
 			"mailtrap_inbox":   resourceInbox(),
 		},
+		DataSourcesMap: map[string]*schema.Resource{
+			"mailtrap_project": datasourceProject(),
+		},
 		ConfigureFunc: providerConfigure,
 	}
 }

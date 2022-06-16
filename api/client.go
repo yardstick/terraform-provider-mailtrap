@@ -112,11 +112,11 @@ func handleError(resp *http.Response, json []byte, err error) error {
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		defer resp.Request.Body.Close()
-		reqBody, _ := ioutil.ReadAll(resp.Request.Body)
+		defer resp.Body.Close()
+		respBody, _ := ioutil.ReadAll(resp.Body)
 		log.Error("NON-OK Status Code for Request")
 		log.Error("URL: " + resp.Request.URL.String())
-		log.Error("BODY: " + string(reqBody))
+		log.Error("BODY: " + string(respBody))
 		log.Error("STATUS: " + resp.Status)
 		return errors.New("NON-OK Status Code Returned From Mailtrap")
 	}

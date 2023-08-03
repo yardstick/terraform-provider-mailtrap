@@ -52,7 +52,10 @@ jobs:
         terraform:
           - "0.12.29"
           - "0.13.4"
-          - "0.14.0-beta2"
+          - "0.14.11"
+          - "0.15.5"
+          - "1.0.11"
+          - "1.5.4"
     steps:
       - name: Set up Go
         uses: actions/setup-go@v2.1.3

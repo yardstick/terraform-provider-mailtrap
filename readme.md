@@ -1,3 +1,5 @@
+[![Tests](https://github.com/yardstick/terraform-provider-mailtrap/actions/workflows/test.yml/badge.svg)](https://github.com/yardstick/terraform-provider-mailtrap/actions/workflows/test.yml)
+
 ## A simple terraform provider for mailtrap.io
 
 https://registry.terraform.io/providers/yardstick/mailtrap
